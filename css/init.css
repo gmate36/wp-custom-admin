@@ -676,4 +676,9 @@ input[type="radio"]:checked:before {
     color: var(--primary);
 }
 
+#toplevel_page_log-out img {
+    opacity: 1 !important;
+    width: 19px;
+}
+
 /* posts */
