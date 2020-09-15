@@ -8,10 +8,11 @@
     --shadow: 0 5px 25px 0 rgba(0, 0, 0, 0.1);
     --border: rgba(0, 0, 0, 0.07);
     --error: #f0134d;
-
+    --success: #0ca910;
 }
 
-.wp-admin input[type="text"], .wp-admin input[type="search"] {
+.wp-admin input[type="text"], .wp-admin input[type="search"],
+input[type="number"] {
     border-color: var(--border);
     transition: border-color ease 200ms;
     box-shadow: unset;
@@ -19,7 +20,8 @@
 }
 
 .wp-admin input[type="text"]:focus,
-.wp-admin input[type="search"]:focus {
+.wp-admin input[type="search"]:focus,
+input[type="number"]:focus {
     box-shadow: unset;
     border-color: var(--primary_light);
 }
@@ -36,23 +38,53 @@
 
 
 #adminmenu {
-    margin-top: 0;
+    margin-top: 20px;
 }
 
 
 /* right menu */
 #adminmenuback, #adminmenuwrap, #adminmenu, #adminmenu .wp-submenu {
-    width: 240px;
+    width: 240px !important;
     background-color: var(--primary) !important;
 }
 
 #wpadminbar {
-    background: var(--primary_light);
+    background: transparent;
+    position: relative;
 }
 
-#wp-admin-bar-site-name {
-    width: 240px !important;
+#wp-admin-bar-menu-toggle a {
     background-color: var(--primary) !important;
+}
+
+#wp-admin-bar-menu-toggle a .ab-icon:before {
+    color: var(--light) !important;
+}
+
+
+.quicklinks {
+    position: absolute !important;
+    top: 10px;
+    right: 10px;
+    left: auto;
+}
+
+@media screen and (max-width: 782px) {
+    .wp-responsive-open #wpbody {
+        right: -19em;
+    }
+}
+
+@media screen and (max-width: 782px) {
+    .subsubsub {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 960px) and (min-width: 783px) {
+    .auto-fold #adminmenuback, .auto-fold #adminmenuwrap, .auto-fold #adminmenu, .auto-fold #adminmenu li.menu-top {
+        width: 36px !important;
+    }
 }
 
 body.wp-admin {
@@ -67,6 +99,12 @@ body.wp-admin {
 @media screen and (max-width: 960px) {
     #wpcontent, #wpfooter {
         margin-left: 36px !important;
+    }
+}
+
+@media screen and (max-width: 782px) {
+    #wpcontent, #wpfooter {
+        margin-left: 0 !important;
     }
 }
 
@@ -97,6 +135,10 @@ body.wp-admin {
     color: white;
 }
 
+.untrash a {
+    color: var(--primary);
+}
+
 #misc-publishing-actions a {
     color: var(--primary);
     text-decoration: none;
@@ -107,7 +149,8 @@ body.wp-admin {
 .tagadd,
 .insert-media,
 #search-submit,
-#add-new-comment button {
+#add-new-comment button,
+#save-post {
     background-color: var(--primary) !important;
     border: unset !important;
     color: var(--light) !important;
@@ -274,16 +317,48 @@ ul#adminmenu a.wp-has-current-submenu:after, ul#adminmenu > li.current > a.curre
     color: var(--light) !important;
 }
 
-#wpadminbar .ab-icon:before, #wpadminbar .ab-item:before, #wpadminbar #adminbarsearch:before {
-    color: var(--light) !important;
-}
-
 /* left-menu */
 
 /* posts */
+.subsubsub {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.subsubsub li {
+    color: transparent;
+    margin-bottom: 10px;
+}
+
+
 .subsubsub li a {
     color: var(--primary);
+    border: 1px solid var(--primary);
+    border-radius: 30px;
+    padding: 6px 12px;
 }
+
+.subsubsub li a:focus {
+    box-shadow: unset;
+}
+
+
+.subsubsub li a .count {
+    color: var(--primary);
+}
+
+.subsubsub li a.current {
+    background-color: var(--primary);
+    color: var(--light);
+    font-weight: normal;
+}
+
+.subsubsub li a.current .count {
+    color: var(--light);
+}
+
 
 #posts-filter input[type="submit"] {
     background: var(--primary);
@@ -291,8 +366,12 @@ ul#adminmenu a.wp-has-current-submenu:after, ul#adminmenu > li.current > a.curre
     border: unset;
 }
 
+#posts-filter {
+    margin-top: 20px;
+}
+
 .row-actions .edit a, .row-actions .view a, .editinline, .row-title {
-    color: var(--primary) !important;
+    color: var(--dark) !important;
 }
 
 .categories a, .manage-column a {
@@ -328,6 +407,7 @@ ul#adminmenu a.wp-has-current-submenu:after, ul#adminmenu > li.current > a.curre
     background-color: var(--light);
     box-shadow: var(--shadow) !important;
     border-color: var(--border) !important;
+    margin-top: 10px !important;
 }
 
 .wp-list-table td, .wp-list-table th {
@@ -371,5 +451,189 @@ ul#adminmenu a.wp-has-current-submenu:after, ul#adminmenu > li.current > a.curre
     border-color: var(--border);
 }
 
+
+@media screen and (min-width: 783px) {
+    #wpadminbar {
+        display: none !important;
+    }
+}
+
+
+.logout-button {
+    padding: 8px 16px;
+    background-color: var(--primary);
+    color: var(--light) !important;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.logout-button:focus {
+    box-shadow: unset;
+}
+
+.wp-menu-separator {
+    display: none;
+}
+
+a.wp-not-current-submenu::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background-color: transparent;
+    transition: background-color ease 200ms;
+}
+
+a.wp-not-current-submenu:hover::after {
+    background-color: var(--light);
+}
+
+.yoast_cornerstone {
+    display: none !important;
+}
+
+.notice-success, div.updated {
+    border-left-color: var(--success);
+}
+
+.notice-success a {
+    color: var(--primary);
+}
+
+.notice-error, div.error {
+    border-left-color: var(--error);
+}
+
+.column-posts a {
+    color: var(--primary);
+}
+
+.wp-heading-inline {
+    color: var(--dark);
+}
+
+#remove-post-thumbnail {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+#set-post-thumbnail:focus {
+    box-shadow: unset;
+}
+
+@media screen and (max-width: 782px) {
+    .wp-toolbar {
+        padding-top: 0 !important;
+    }
+
+    .tablenav.top {
+        display: none;
+    }
+}
+
+#adminmenumain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 5;
+}
+
+#screen-meta {
+    border: unset;
+    border-radius: 4px;
+    box-shadow: var(--shadow);
+}
+
+#show-settings-link {
+    border: 1px solid var(--primary) !important;
+    border-radius: 4px !important;
+    background-color: var(--bg) !important;
+    color: var(--primary) !important;
+    padding-right: 25px !important;
+}
+
+#show-settings-link:focus, .screen-meta-active {
+    box-shadow: unset !important;
+}
+
+.screen-meta-active {
+    margin-top: 10px !important;
+}
+
+#show-settings-link:after {
+    transition: ransform ease 200ms, right ease 200ms;
+    position: absolute !important;
+    top: 50% !important;
+    right: 13px !important;
+    color: var(--primary) !important;
+    width: 6px !important;
+    height: 6px !important;
+    content: "" !important;
+    padding: 0 !important;
+    border-bottom: 2px solid var(--primary);
+    border-right: 2px solid var(--primary);
+    transform: rotate(45deg) translateY(-70%) !important;
+}
+
+#show-settings-link.screen-meta-active:after {
+    transform: rotate(-135deg) translateY(-70%) !important;
+    right: 7px !important;
+}
+
+input[type="checkbox"] {
+    border-radius: 3px !important;
+    box-shadow: unset !important;
+    position: relative;
+    width: 1rem !important;
+    height: 1rem !important;
+}
+
+input[type="checkbox"]:checked:before {
+    position: absolute !important;
+    top: 65% !important;
+    content: "" !important;
+    width: 4px !important;
+    height: 8px !important;
+    left: 50%;
+    border-right: 2px solid var(--primary);
+    border-bottom: 2px solid var(--primary);
+    transform: rotate(45deg) translate(-50%, -50%);
+}
+
+@media screen and (max-width: 782px) {
+    input[type="checkbox"]:checked:before {
+        left: 55%;
+    }
+}
+
+input[type="radio"] {
+    border-radius: 50% !important;
+    box-shadow: unset !important;
+    position: relative;
+    border: 1px solid var(--primary) !important;
+    width: 1rem !important;
+    height: 1rem !important;
+}
+
+input[type="radio"]:checked:before {
+    position: absolute !important;
+    top: 50% !important;
+    content: "" !important;
+    width: 10px !important;
+    height: 10px !important;
+    left: 50%;
+    margin: 0 !important;
+    background-color: var(--primary) !important;
+    transform: translate(-50%, -50%);
+}
+
+@media screen and (max-width: 782px) {
+    #wpbody-content {
+        padding-top: 40px;
+    }
+}
 
 /* posts */

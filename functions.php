@@ -26,4 +26,6 @@ add_action('admin_head', 'removeUpdateNotice');
 add_action('admin_menu', 'removeAdminMenuItems');
 
 
-add_action('admin_head', 'mytheme_remove_help_tabs');
+add_action('admin_menu', function () {
+    add_menu_page('Дополнительные настройки сайта', 'Пульт', 'manage_options', 'site-options', '', '', 4);
+});

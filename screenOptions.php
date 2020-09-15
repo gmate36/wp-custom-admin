@@ -7,4 +7,6 @@ function mytheme_remove_help_tabs()
     }
 }
 
-add_filter('screen_options_show_screen', '__return_false');
+/*add_filter('screen_options_show_screen', '__return_false');*/
+
+add_action('admin_head', 'mytheme_remove_help_tabs');

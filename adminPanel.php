@@ -8,7 +8,7 @@ function remove_wp_logo($wp_admin_bar)
         $wp_admin_bar->remove_node('wpseo-menu');
         $wp_admin_bar->remove_node('my-account');
         $wp_admin_bar->remove_node('bar-archive');
-
+        $wp_admin_bar->remove_node('site-name');
     }
 }
 
@@ -23,10 +23,38 @@ function removeAdminMenuItems()
         remove_menu_page('tools.php');
         remove_menu_page('profile.php');
         remove_menu_page('options-general.php');
+        add_menu_page(
+            '',
+            'Выйти из кабинета',
+            'edit_posts',
+            '/log-out',
+            'page_callback_function',
+            'dashicons-exit'
+        );
     }
     return;
-
 }
+
+function page_callback_function()
+{
+    echo '<a class="logout-button" href="' . wp_logout_url() . '">Выйти из личного кабинета</a> ';
+}
+
+function wpse_141446_admin_bar_logout($wp_admin_bar)
+{
+    if (is_user_logged_in()) {
+        $wp_admin_bar->add_menu(
+            array(
+                'id' => 'my-log-out',
+                'parent' => 'top-secondary',
+                'title' => __('Log out'),
+                'href' => wp_logout_url(),
+            )
+        );
+    }
+}
+
+add_action('admin_bar_menu', 'wpse_141446_admin_bar_logout', 100);
 
 function customAdminScripts()
 {
@@ -53,5 +81,3 @@ function my_footer_shh()
 add_action('admin_menu', 'my_footer_shh');
 
 add_filter('admin_footer_text', '__return_empty_string', 11);
-
-add_filter('show_admin_bar', '__return_false');

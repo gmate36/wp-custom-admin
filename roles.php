@@ -1,8 +1,8 @@
 <?php
 function add_roles_on_plugin_activation()
 {
-    add_action('init', 'remove_admin_bar');
     $manager = get_role('editor');
+    add_filter('show_admin_bar', '__return_false');
 
     $caps = [
         'delete_published_pages',
