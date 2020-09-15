@@ -16,7 +16,6 @@ function remove_wp_logo($wp_admin_bar)
 function removeAdminMenuItems()
 {
     if (current_user_can('content_manager')) {
-        remove_menu_page('index.php');
         remove_menu_page('edit.php?post_type=page');
         remove_menu_page('themes.php');
         remove_menu_page('users.php');

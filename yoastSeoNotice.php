@@ -18,6 +18,7 @@ function my_remove_yoast_cols($columns)
         unset($columns['wpseo-score-readability']);
         unset($columns['wpseo-links']);
         unset($columns['wpseo-linked']);
+        return $columns;
     }
     return $columns;
 }

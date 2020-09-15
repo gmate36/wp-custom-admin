@@ -150,10 +150,25 @@ body.wp-admin {
 .insert-media,
 #search-submit,
 #add-new-comment button,
-#save-post {
+#save-post,
+#plupload-browse-button,
+.button-hero {
     background-color: var(--primary) !important;
     border: unset !important;
     color: var(--light) !important;
+    transition: opacity ease 200ms;
+}
+
+.button-primary:hover,
+.category-add-submit:hover,
+.tagadd:hover,
+.insert-media:hover,
+#search-submit:hover,
+#add-new-comment button:hover,
+#save-post:hover,
+#plupload-browse-button:hover,
+.button-hero:hover {
+    opacity: 0.9;
 }
 
 .submitdelete {
@@ -205,7 +220,7 @@ body.wp-admin {
 }
 
 #wp-content-editor-tools {
-    background-color: transparent;
+    background-color: var(--bg);
     border: unset !important;
 }
 
@@ -538,7 +553,7 @@ a.wp-not-current-submenu:hover::after {
     top: 0;
     left: 0;
     height: 100%;
-    z-index: 5;
+    z-index: 999;
 }
 
 #screen-meta {
@@ -564,7 +579,6 @@ a.wp-not-current-submenu:hover::after {
 }
 
 #show-settings-link:after {
-    transition: ransform ease 200ms, right ease 200ms;
     position: absolute !important;
     top: 50% !important;
     right: 13px !important;
@@ -634,6 +648,32 @@ input[type="radio"]:checked:before {
     #wpbody-content {
         padding-top: 40px;
     }
+}
+
+#message {
+    border: unset;
+    border-radius: 4px;
+    box-shadow: var(--shadow);
+}
+
+#message a {
+    color: var(--primary);
+}
+
+#message a:focus {
+    box-shadow: unset;
+}
+
+.upload-flash-bypass a {
+    color: var(--primary);
+}
+
+#wpseo_meta {
+    display: none !important;
+}
+
+.postbox-container a {
+    color: var(--primary);
 }
 
 /* posts */
