@@ -221,6 +221,9 @@ body.wp-admin {
 
 #wp-content-editor-tools {
     background-color: var(--bg);
+    padding-left: 10px;
+    padding-right: 10px;
+    box-sizing: border-box;
     border: unset !important;
 }
 
