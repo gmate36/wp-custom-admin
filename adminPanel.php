@@ -15,6 +15,7 @@ function remove_wp_logo($wp_admin_bar)
 
 function removeAdminMenuItems()
 {
+    $imgPath = MY_PLUGIN_PlACE . '/img/sign-out.svg';
     if (current_user_can('content_manager')) {
         remove_menu_page('edit.php?post_type=page');
         remove_menu_page('themes.php');
@@ -28,7 +29,7 @@ function removeAdminMenuItems()
             'edit_posts',
             '/log-out',
             'page_callback_function',
-            'dashicons-exit'
+            $imgPath
         );
     }
     return;
