@@ -64,14 +64,16 @@ function rename_posts_labels($labels)
 
 function replace_admin_menu_icons_css()
 {
-    $imgPath = MY_PLUGIN_PlACE . '/img/newspaper-solid.svg';
-    ?>
-    <style lang="css">
-        #adminmenu .dashicons-admin-post:before {
-            content: url(<?php echo $imgPath ?>) !important;
-        }
-    </style>
-    <?php
+    if (current_user_can('content_manager')) {
+        $imgPath = MY_PLUGIN_PlACE . '/img/newspaper-solid.svg';
+        ?>
+        <style lang="css">
+            #adminmenu .dashicons-admin-post:before {
+                content: url(<?php echo $imgPath ?>) !important;
+            }
+        </style>
+        <?php
+    }
 }
 
 add_action('admin_head', 'replace_admin_menu_icons_css');
