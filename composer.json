@@ -1,4 +1,4 @@
 {
   "name": "garipovbulat/wp-custom-admin",
-  "type": "library"
+  "type": "wordpress-plugin"
 }
