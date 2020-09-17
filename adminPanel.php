@@ -81,3 +81,13 @@ function my_footer_shh()
 add_action('admin_menu', 'my_footer_shh');
 
 add_filter('admin_footer_text', '__return_empty_string', 11);
+
+
+add_action('admin_head', 'insert_header_wpse_51023');
+
+function insert_header_wpse_51023()
+{
+    if (current_user_can('content_manager')) {
+        include 'views/logo.php';
+    }
+}

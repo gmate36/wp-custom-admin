@@ -50,11 +50,14 @@ require dirname(__DIR__) . '/' . MY_PLUGIN_NAME . '/adminPanel.php';
 require dirname(__DIR__) . '/' . MY_PLUGIN_NAME . '/screenOptions.php';
 require dirname(__DIR__) . '/' . MY_PLUGIN_NAME . '/yoastSeoNotice.php';
 require dirname(__DIR__) . '/' . MY_PLUGIN_NAME . '/fixPostTitles.php';
+require dirname(__DIR__) . '/' . MY_PLUGIN_NAME . '/dashboardWidgets.php';
 
 add_action('admin_bar_menu', 'remove_wp_logo', 999);
 
 /* styles && scripts */
 add_action('admin_head', 'customAdminScripts');
+
+add_action('admin_head', 'activityWidgetScripts');
 
 add_action('admin_head', 'removeUpdateNotice');
 
