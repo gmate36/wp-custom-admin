@@ -38,7 +38,7 @@ input[type="number"]:focus {
 
 
 #adminmenu {
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 
@@ -48,9 +48,18 @@ input[type="number"]:focus {
     background-color: var(--primary) !important;
 }
 
+@media screen and (max-width: 960px) and (min-width: 783px) {
+    #adminmenuwrap {
+        overflow: hidden;
+    }
+}
+
 #wpadminbar {
     background: transparent;
     position: relative;
+    margin-left: auto;
+    margin-right: 0;
+    width: max-content;
 }
 
 #wp-admin-bar-menu-toggle a {
@@ -583,21 +592,22 @@ a.wp-not-current-submenu:hover::after {
 
 #show-settings-link:after {
     position: absolute !important;
-    top: 50% !important;
+    top: 45% !important;
     right: 13px !important;
     color: var(--primary) !important;
     width: 6px !important;
     height: 6px !important;
     content: "" !important;
     padding: 0 !important;
-    border-bottom: 2px solid var(--primary);
-    border-right: 2px solid var(--primary);
+    border-bottom: 1px solid var(--primary);
+    border-right: 1px solid var(--primary);
     transform: rotate(45deg) translateY(-70%) !important;
 }
 
 #show-settings-link.screen-meta-active:after {
-    transform: rotate(-135deg) translateY(-70%) !important;
+    transform: rotate(-135deg) translateY(-50%) !important;
     right: 7px !important;
+    top: 22px !important;
 }
 
 input[type="checkbox"] {
@@ -686,6 +696,33 @@ input[type="radio"]:checked:before {
 
 #edit-slug-buttons {
     display: none !important;
+}
+
+.logo-admin {
+    margin-top: 10px;
+    padding-left: 10px;
+}
+
+.logo-admin .custom-logo {
+    width: 120px;
+    height: auto;
+}
+
+@media screen and (max-width: 960px) and (min-width: 783px) {
+    .logo-admin {
+        padding-left: 5px;
+    }
+
+    .logo-admin .custom-logo {
+        width: 90px;
+        height: auto;
+    }
+}
+
+
+.custom-logo-link {
+    outline: none;
+    box-shadow: unset !important;
 }
 
 /* posts */
