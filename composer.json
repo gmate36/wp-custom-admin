@@ -1,4 +1,5 @@
 {
   "name": "gmate36/wp-custom-admin",
-  "type": "wordpress-plugin"
+  "type": "wordpress-plugin",
+  "version": "1.0.0"
 }
